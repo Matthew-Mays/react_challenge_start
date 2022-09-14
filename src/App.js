@@ -8,8 +8,8 @@ function App() {
   Define state variables for 
   contacts and appointments 
   */
-  const [contacts, setContacts] = useState([{ name:'name', phone:'555-555-5555', email:'notarealemail@notrealsite.com'}]);
-  const [appointments, setAppointments] = useState([{title:'Doctor Appointment', contact:{name:'', phone:'', email:''}, date:'09/20/2022', time:'12:30 PM'}]);
+  const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   const ROUTES = {
     CONTACTS: "/contacts",
@@ -24,7 +24,7 @@ function App() {
     setContacts(prev => [...prev, {name:name, phone:phone, email:email}])
   };
 
-  const addAppointments = (title, contact, date, time) => {
+  const addAppointment = (title, contact, date, time) => {
     setAppointments(current => [...current, {title:title, contact:contact, date:date, time:time}])
   };
 
@@ -49,7 +49,7 @@ function App() {
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
             {/* Add props to AppointmentsPage */}
-            <AppointmentsPage appointments={appointments} addAppointments={addAppointments} />
+            <AppointmentsPage appointments={appointments} addAppointment={addAppointment} contacts={contacts} />
           </Route>
         </Switch>
       </main>

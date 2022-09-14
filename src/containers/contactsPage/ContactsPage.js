@@ -22,12 +22,10 @@ export const ContactsPage = (props) => {
     if the contact name is not a duplicate
     */
    if(!duplicate) {
-    props.addContact(e);
+    addContact(name, phone, email);
     setName('');
     setPhone('');
     setEmail('');
-   } else {
-    alert('Hey buddy this is a duplicate');
    }
   };
 
@@ -42,19 +40,21 @@ export const ContactsPage = (props) => {
         )
       ) {
       setDuplicate(true);
+    } else {
+      setDuplicate(false);
     }
-  })
+  }, [name, contacts, duplicate])
 
   return (
     <div>
       <section>
-        <h2>Add Contact</h2> 
-        <ContactForm name={name} phone={phone} email={email} setName={setName} setPhone={setPhone} setEmail={setEmail} handleSubmit={handleSubmit} />
+        <h2>Add Contact {duplicate ? "- Name Already Exists" : ""}</h2> 
+        <ContactForm name={name} setName={setName} phone={phone} setPhone={setPhone} email={email} setEmail={setEmail} handleSubmit={handleSubmit} />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList contacts={contacts}/>
+        <TileList tiles={contacts}/>
       </section>
     </div>
   );
