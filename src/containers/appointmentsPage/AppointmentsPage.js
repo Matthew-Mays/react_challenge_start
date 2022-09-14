@@ -7,9 +7,9 @@ export const AppointmentsPage = ({appointments, addAppointment, contacts}) => {
   appointment info
   */
   const [title, setTitle] = useState('');
-  const [contact, setContact] = useState('name');
-  const [date, setDate] = useState('09/20/2022');
-  const [time, setTime] = useState('12:30 PM');
+  const [contact, setContact] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
